@@ -1,10 +1,12 @@
 "use client";
-import type { Metadata } from "next";
+// import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
+import Navbar from "../components/Navbar";
+import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import { usePathname } from "next/navigation";
+import AppProvider from "./AppProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +38,7 @@ export default function RootLayout({
     "/reset-password",
     "/profile-setup",
     "/verify-email",
+    "/user-registration",
   ];
 
   const isUserPage =
@@ -50,11 +53,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased p-6 pb-0`}
       >
-        {!isAuthPage && !isUserPage && <Navbar />}
-        {children}
-        <Toaster position="top-right" reverseOrder={false} />
+        <AppProvider>
+          {!isAuthPage && !isUserPage && <Navbar />}
+          {children}
+          <Toaster position="top-right" reverseOrder={false} />
+        </AppProvider>
       </body>
     </html>
   );

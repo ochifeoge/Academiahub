@@ -1,51 +1,53 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
 import { FaBars } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Logo from "./Logo";
 
+// placed navlins array outside the component to prevent recreating it on every rerender
+const navlinks = [
+  {
+    id: 1,
+    name: "Home",
+    href: "/",
+  },
+  {
+    id: 2,
+    name: "Explore",
+    href: "/explore",
+  },
+  {
+    id: 3,
+    name: "Features",
+    href: "/features",
+  },
+  {
+    id: 4,
+    name: "How it works",
+    href: "/how-it-works",
+  },
+  {
+    id: 5,
+    name: "Testimonials",
+    href: "/testimonials",
+  },
+  {
+    id: 6,
+    name: "About us",
+    href: "/aboutus",
+  },
+  {
+    id: 7,
+    name: "FAQs",
+    href: "/faqs",
+  },
+];
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
-  const navlinks = [
-    {
-      id: 1,
-      name: "Home",
-      href: "/",
-    },
-    {
-      id: 2,
-      name: "Explore",
-      href: "/explore",
-    },
-    {
-      id: 3,
-      name: "Features",
-      href: "/features",
-    },
-    {
-      id: 4,
-      name: "How it works",
-      href: "/how-it-works",
-    },
-    {
-      id: 5,
-      name: "Testimonials",
-      href: "/testimonials",
-    },
-    {
-      id: 6,
-      name: "About us",
-      href: "/aboutus",
-    },
-    {
-      id: 7,
-      name: "FAQs",
-      href: "/faqs",
-    },
-  ];
   const pathname = usePathname();
+  // const router = useRouter();
 
   return (
     <nav className="flex relative items-center justify-between bg-white py-5 px-6">
@@ -56,12 +58,8 @@ const Navbar = () => {
           className="text-[18px] min-[1140px]:hidden cursor-pointer"
         />
         {/* Logo - Updated path to match your auth pages */}
-        <Image
-          src={"/assets/images/academiaHub-Logo.png"}
-          alt="AcademiaHub logo"
-          width={158}
-          height={45}
-        />
+        {/* updated image to use Logo component with Link to help with navigating to "/" */}
+        <Logo />
       </div>
 
       {/* Nav Links */}
@@ -71,7 +69,7 @@ const Navbar = () => {
             <Link
               className={`text-[14px] leading-[130%] ${
                 pathname === link.href &&
-                "bg-gradient-to-r from-primary to-[#F8BD00] bg-clip-text text-transparent"
+                "bg-linear-to-r from-primary to-[#F8BD00] bg-clip-text text-transparent"
               }`}
               href={link.href}
             >
@@ -123,7 +121,7 @@ const Navbar = () => {
               <Link
                 className={`text-[14px] leading-[130%] ${
                   pathname === link.href &&
-                  "bg-gradient-to-r from-primary to-[#F8BD00] bg-clip-text text-transparent"
+                  "bg-linear-to-r from-primary to-[#F8BD00] bg-clip-text text-transparent"
                 }`}
                 onClick={() => setOpenMenu(false)}
                 href={link.href}

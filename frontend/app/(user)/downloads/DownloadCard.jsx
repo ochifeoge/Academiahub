@@ -1,12 +1,10 @@
-import { mockData } from "../data/exploreMockData";
+import { mockData } from "@/app/data/exploreMockData";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { FaRegComment } from "react-icons/fa";
 import { HiOutlineUpload } from "react-icons/hi";
-import { MdOutlineFileDownload } from "react-icons/md";
-import Like from "./Like";
-import BookMark from "./BookMark";
-const ResearchCard = () => {
+import { IoTrashOutline } from "react-icons/io5";
+
+const DownloadCard = () => {
   return (
     <section className="grid grid-cols-2 gap-4 lg:grid-cols-3">
       {mockData.map((data) => (
@@ -30,7 +28,7 @@ const ResearchCard = () => {
             <h3 className="font-medium text-[8px]  md:text-lg leading-[130%]">
               {data.name}
             </h3>
-            <div className="flex items-center  gap-1.5 mb-4 lg:mb-9">
+            <div className="flex items-center  gap-1.5 mb-2">
               <div className="w-5 h-5 md:w-10 md:h-10 relative">
                 <Image
                   className="rounded-full "
@@ -48,31 +46,39 @@ const ResearchCard = () => {
                 </p>
               </div>
             </div>
-            {/* stats section */}
-            <div className="flex items-center gap-2 max-md:justify-between lg:gap-12.5 relative">
-              <Like data={data} />
-              <div className="flex items-end gap-[3px]">
-                <FaRegComment className="cursor-pointer w-3.5 h-3.5 lg:w-[18px] lg:h-[18px]" />
-                <small>{data?.comments}</small>
-              </div>
-              <div className="flex items-end gap-[3px]">
-                <MdOutlineFileDownload className="cursor-pointer text-sm md:text-lg" />
-                <small>{data?.downloads}</small>
-              </div>
-              <BookMark />
+            {/* description  */}
+            <div className="space-y-1">
+              <span className="flex items-center text-[8px] md:text-sm gap-2">
+                <small className="text-grey  leading-[130%]">Department:</small>
+                <small className="text-[8px] md:text-sm">
+                  Electrical Engineering
+                </small>
+              </span>
+              <span className="flex items-center text-[8px] md:text-sm gap-2">
+                <small className="text-grey  leading-[130%]">Downloaded:</small>
+                <small className="text-[8px] md:text-sm">Oct 5, 2025</small>
+              </span>
+              <span className="flex items-center text-[8px] md:text-sm gap-2">
+                <small className="text-grey  leading-[130%]">Size:</small>
+                <small className="text-[8px] md:text-sm">28 mb</small>
+              </span>
             </div>
           </div>
-          <Button
-            variant="default"
-            size="lg"
-            className="w-full md:h-9 h-7 flex items-center justify-center text-sm font-medium md:text-[16px] leading-[130%]"
-          >
-            View Details
-          </Button>
+          <div className="my-2 flex justify-between items-center">
+            <Button
+              variant="default"
+              size="lg"
+              className="basis-[60%] md:h-9 h-7 flex items-center justify-center text-sm font-medium md:text-[16px] leading-[130%]"
+            >
+              View Details
+            </Button>
+
+            <IoTrashOutline className="text-red-500" size={24} />
+          </div>
         </article>
       ))}
     </section>
   );
 };
 
-export default ResearchCard;
+export default DownloadCard;
