@@ -12,7 +12,13 @@ import { getCategoryImage } from "@/lib/categoryImage";
 import MessageAuthorButton from "./MessageAuthorButton";
 import DownloadButton from "../shared/DownloadButton";
 import Like from "@/components/Like";
-const PublicationDetails = ({ details, isLiked }: { details: Document; isLiked: boolean }) => {
+const PublicationDetails = ({
+  details,
+  isLiked,
+}: {
+  details: Document;
+  isLiked: boolean;
+}) => {
   const [downloadCount, setDownloadCount] = useState(details.downloads);
   return (
     <div className="bg-white border lg:px-4 lg:pb-8.75 pt-6.25 border-[#D9D9D9] rounded-[15px] p-3">
@@ -38,7 +44,11 @@ const PublicationDetails = ({ details, isLiked }: { details: Document; isLiked: 
         </div>
 
         {/* message button for mobile */}
-        <MessageAuthorButton authorId={details.authorId} className="md:hidden p-1" label="Message" />
+        <MessageAuthorButton
+          authorId={details.authorId}
+          className="md:hidden p-1"
+          label="Message"
+        />
       </div>
 
       <div className="relative rounded-[12px] w-full h-34.25 md:h-59.75 mb-4.25 lg:mb-5.5">
@@ -74,23 +84,27 @@ const PublicationDetails = ({ details, isLiked }: { details: Document; isLiked: 
           <p className="">{downloadCount}</p>
         </span>
       </div>
-      <div className="flex items-center  gap-2 md:gap-5 mb-3 lg:mb-5 justify-between">
+      <div className="flex items-center  gap-2 md:gap-5 mb-3 lg:mb-5 justify-between p">
         <DownloadButton
           documentId={details.id}
           fileUrl={details.fileUrl}
           fileName={details.fileName}
-          className="basis-[48%] text-xs md:text-base"
+          className="basis-[48%] w-[47%] text-xs md:text-base h-7.5 md:h-11"
           onDownload={() => setDownloadCount((prev) => prev + 1)}
         />
         <Button
-          className="basis-[48%] border-primary hover:bg-primary/85 hover:text-white text-xs md:text-base"
+          className="basis-[48%] w-[47%] border-primary h-7.5 md:h-11 hover:bg-primary/85 hover:text-white text-xs md:text-base"
           variant={"outline"}
         >
           Save for later
         </Button>
       </div>
 
-      <Like documentId={details.id} initialLiked={isLiked} initialCount={details.likes} />
+      <Like
+        documentId={details.id}
+        initialLiked={isLiked}
+        initialCount={details.likes}
+      />
     </div>
   );
 };
