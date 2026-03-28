@@ -1,6 +1,7 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import PublicationCard from "../dashboard/PublicationCard";
+import { ReactNode } from "react";
 
 const filterOptions = [
   {
@@ -10,7 +11,7 @@ const filterOptions = [
     value: "likes",
   },
 ];
-const PublicationsAndLikes = () => {
+const PublicationsAndLikes = ({ children }: { children: ReactNode }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
@@ -40,7 +41,11 @@ const PublicationsAndLikes = () => {
         ))}
       </div>
 
-      {filter === "publications" ? <PublicationCard /> : <p className="text-center text-gray-500 py-8">No likes yet</p>}
+      {filter === "publications" ? (
+        children
+      ) : (
+        <p className="text-center text-gray-500 py-8">No likes yet</p>
+      )}
     </div>
   );
 };

@@ -28,13 +28,19 @@ interface DocumentData {
   fileName: string;
   fileSize: number;
   createdAt: Date | string;
-  author: { id: string; name: string | null; image: string | null };
+  author?: { id: string; name: string | null; image: string | null };
 }
 
-const PublicationCard = ({ documents = [] }: { documents?: DocumentData[] }) => {
+const PublicationCard = ({
+  documents = [],
+}: {
+  documents?: DocumentData[];
+}) => {
   if (documents.length === 0) {
     return (
-      <p className="text-center text-gray-500 py-8">To see a publication, upload one.</p>
+      <p className="text-center text-gray-500 py-8">
+        To see a publication, upload one.
+      </p>
     );
   }
 
