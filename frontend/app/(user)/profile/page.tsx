@@ -10,22 +10,22 @@ import PublicationCard from "@/components/user/dashboard/PublicationCard";
 
 export const metadata = userPagesMetadata.profile;
 
-const session = await getServerSession(authOptions);
-if (!session?.user?.id) {
-  redirect("/login");
-}
+const Page = async () => {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.id) {
+    redirect("/login");
+  }
 
-const userId = session.user.id;
+  const userId = session.user.id;
 
-const userDocuments = await prisma.user.findUnique({
-  where: { id: userId },
-  select: {
-    Document: {},
-  },
-});
+  const userDocuments = await prisma.user.findUnique({
+    where: { id: userId },
+    select: {
+      Document: {},
+    },
+  });
 
-const documents = userDocuments?.Document;
-const Page = () => {
+  const documents = userDocuments?.Document;
   return (
     <>
       <ProfileSection />
