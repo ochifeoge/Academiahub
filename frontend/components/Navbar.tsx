@@ -31,11 +31,6 @@ const navlinks = [
     href: "/how-it-works",
   },
   {
-    id: 5,
-    name: "Testimonials",
-    href: "/testimonials",
-  },
-  {
     id: 6,
     name: "About us",
     href: "/about-us",
