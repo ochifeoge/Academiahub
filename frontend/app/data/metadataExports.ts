@@ -269,20 +269,6 @@ export const howItWorksMetadata: Metadata = {
   },
 };
 
-export const testimonialsMetadata: Metadata = {
-  title: "Testimonials",
-  description:
-    "Read testimonials from students, lecturers, and researchers who have used AcademiaHub to collaborate and advance their work.",
-  alternates: { canonical: "/testimonials" },
-  openGraph: {
-    title: "Testimonials | AcademiaHub",
-    description:
-      "Read testimonials from students, lecturers, and researchers who have used AcademiaHub to collaborate and advance their work.",
-    url: `${siteUrl}/testimonials`,
-    type: "website",
-  },
-};
-
 export const aboutUsMetadata: Metadata = {
   title: "About us",
   description:
